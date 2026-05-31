@@ -11,20 +11,16 @@ class Financiamento{
         this.prazoFinanciamento = prazoFinanc;
         this.taxaJurosAnual = taxaJurosAnual;
     }
-    double CalcPagamentoMensal(){
+    double calcPagamentoMensal(){
         return (this.valorImovel / (this.prazoFinanciamento * 12)) *(1 + (this.taxaJurosAnual / 12));
     }
-    double CalcTotalPagamento(){
-        return this.CalcPagamentoMensal() * this.prazoFinanciamento * 12;
+    double calcTotalPagamento(){
+        return this.calcPagamentoMensal() * this.prazoFinanciamento * 12;
     }
 
 }
 class InterfaceUsuario{
-    /*
-    i. Esta classe é responsável por lidar com a entrada de dados do usuário. Estes dados podem ser recebidos via entrada do usuário usando o Scanner.
 
-    3. Pedir ao usuário a taxa de juros: Ela deve conter um metodo o qual pede ao usuário para que digite a taxa de juros anual, e retorne o valor digitado pelo usuário.
-     */
     Scanner sc = new Scanner(System.in);
 
     double valorImovel(){
@@ -54,6 +50,21 @@ public class Main{
         int prazoFinanciamento = user.prazoFinanciamento();
         double taxaJuros = user.taxaJuros();
 
+        System.out.print("---------------------------\n\nValor do Imóvel: R$");
+        System.out.println(valorImovel);
+
+        System.out.print("Prazo do Financiamento: ");
+        System.out.println(prazoFinanciamento);
+
+        System.out.print("Taxa de Juros: ");
+        System.out.println(taxaJuros);
+
         Financiamento financiamento = new Financiamento(valorImovel, prazoFinanciamento, taxaJuros);
+
+        System.out.print("Pagamento mensal: R$");
+        System.out.println(String.format("%.2f", financiamento.calcPagamentoMensal()));
+
+        System.out.print("Total com juros: R$");
+        System.out.println(String.format("%.2f",financiamento.calcTotalPagamento()));
     }
 }
