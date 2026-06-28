@@ -2,7 +2,7 @@ package modelo;
 
 public class Financiamento {
 
-    private double valorImovel;
+    protected double valorImovel;
     public double getValorImovel(){
         return valorImovel;
     }
@@ -10,7 +10,7 @@ public class Financiamento {
         this.valorImovel = newValue;
     }
 
-    private int prazoFinanciamento;
+    protected int prazoFinanciamento;
     public int getPrazoFinanciamento(){
         return prazoFinanciamento;
     }
@@ -18,13 +18,19 @@ public class Financiamento {
         this.prazoFinanciamento = newValue;
     }
 
-    private double taxaJurosAnual;
+    protected double taxaJurosAnual;
     public double getTaxaJurosAnual(){
         return taxaJurosAnual;
     }
     public void setTaxaJurosAnual(double novaTaxa){
         this.taxaJurosAnual = novaTaxa;
     }
+
+    protected double taxaJurosMensal = taxaJurosAnual/12;
+    public double getTaxaJurosMensal(){
+        return taxaJurosMensal;
+    }
+
 
     public Financiamento(double valImovel, int prazoFinanc, double taxaJurosAnual){
         this.valorImovel = valImovel;
