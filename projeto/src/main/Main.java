@@ -14,11 +14,15 @@ public class Main {
         ArrayList<Financiamento> financiamentos = new ArrayList<>();
         double somaValores = 0;
         double somaFinanciamento = 0;
-
+        System.out.println("-----------------------\nCasa 1\n");
         financiamentos.add(cadastrarImovel("casa"));
+        System.out.println("-----------------------\nCasa 2\n");
         financiamentos.add(cadastrarImovel("casa"));
+        System.out.println("-----------------------\nApartamento 1\n");
         financiamentos.add(cadastrarImovel("apartamento"));
+        System.out.println("-----------------------\nApartamento 1\n");
         financiamentos.add(cadastrarImovel("apartamento"));
+        System.out.println("-----------------------\nTerreno 1\n");
         financiamentos.add(cadastrarImovel("terreno"));
 
         int i = 1;
