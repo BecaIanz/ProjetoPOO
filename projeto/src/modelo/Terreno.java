@@ -8,6 +8,6 @@ public class Terreno extends Financiamento{
 
     @Override
     public double calcPagamentoMensal() {
-        return super.calcPagamentoMensal() + (super.calcPagamentoMensal() * 0.02);
+        return super.calcPagamentoMensal() * 1.02;
     }
 }
