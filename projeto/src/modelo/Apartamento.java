@@ -22,7 +22,9 @@ public class Apartamento extends Financiamento{
 
     @Override
     public double calcPagamentoMensal() {
-        return (valorImovel / (prazoFinanciamento * 12)) * (1 + taxaJurosAnual / 12);
+        double totalPag = valorImovel * (1 + taxaJurosAnual * prazoFinanciamento);
+
+        return totalPag / (prazoFinanciamento * 12);
     }
 
     @Override

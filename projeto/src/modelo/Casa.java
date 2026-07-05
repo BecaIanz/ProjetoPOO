@@ -1,5 +1,7 @@
 package modelo;
 
+import util.AcrescimoMaiorQueJurosException;
+
 public class Casa extends Financiamento{
     private double tamAreaConstruida;
     public double getTamAreaConst(){ return tamAreaConstruida; };
@@ -20,8 +22,17 @@ public class Casa extends Financiamento{
     }
 
     public double calcPagamentoMensal(){
-        return (this.valorImovel / (this.prazoFinanciamento * 12)) *(1 + (this.taxaJurosAnual / 12)) + 240;
+        double parcelaSemJuros = valorImovel / (prazoFinanciamento * 12);
+        double juros = parcelaSemJuros * (taxaJurosAnual / 12);
+        try {
+            validaValorJuros(juros, 80);
+        } catch (AcrescimoMaiorQueJurosException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return (this.valorImovel / (this.prazoFinanciamento * 12)) *(1 + (this.taxaJurosAnual / 12)) + 80;
     }
+
 
     @Override
     public void mostrarDados() {
@@ -30,4 +41,13 @@ public class Casa extends Financiamento{
         System.out.println("Área construída: " + getTamAreaConst());
         System.out.println("Área terreno: " + getTamAreaTerreno());
     }
+    private void validaValorJuros(double juros, double acrescimo) throws AcrescimoMaiorQueJurosException {
+        if (acrescimo > juros / 2) {
+            throw new AcrescimoMaiorQueJurosException(
+                    "O aumento de R$" + acrescimo + " é maior que metade dos juros."
+            );
+        }
+    }
+
+
 }

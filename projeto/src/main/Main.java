@@ -6,6 +6,7 @@ import modelo.Casa;
 import modelo.Financiamento;
 import modelo.Terreno;
 import util.InterfaceUsuario;
+import util.Leituras;
 
 import java.util.ArrayList;
 
@@ -29,14 +30,14 @@ public class Main {
         for(Financiamento fin : financiamentos){
             somaValores += fin.getValorImovel();
             somaFinanciamento += fin.calcTotalPagamento();
-            System.out.println("\n------------------------------\nFinanciamento " + i +"\nValor do imóvel: R$" + String.format("%.2f", fin.getValorImovel())  + "\nValor do Financiamento: R$" +  String.format("%.2f", fin.calcTotalPagamento()));
-            i++;
+            fin.mostrarDados();
         }
 
         System.out.println("\n\nSoma imoveis: R$" + somaValores);
         System.out.println("Soma Total dos Financiamentos: R$" + somaFinanciamento);
     }
     public static Financiamento cadastrarImovel( String tipo) {
+        Leituras lt = new Leituras();
         Scanner sc = new Scanner(System.in);
         InterfaceUsuario ui = new InterfaceUsuario(sc);
 
@@ -46,17 +47,17 @@ public class Main {
 
         if(tipo.equals("casa")){
             System.out.println("Digite o tamanho da àrea contruida da casa: ");
-            double areaConst = sc.nextDouble();
+            double areaConst = lt.lerDouble(sc);
             System.out.println("Digite o tamanho da àrea total do terreno da casa: ");
-            double areaTotal = sc.nextDouble();
+            double areaTotal =  lt.lerDouble(sc);
 
             return new Casa(valor, prazo, taxa, areaConst, areaTotal);
         }
         else if(tipo.equals("apartamento")){
             System.out.println("Digite a quantidade de vagas de garagem: ");
-            int garagem = sc.nextInt();
+            int garagem =  lt.lerInt(sc);
             System.out.println("Digite o andar do apartamento: ");
-            int andar = sc.nextInt();
+            int andar = lt.lerInt(sc);
 
             return new Apartamento(valor, prazo, taxa, garagem, andar);
         }
