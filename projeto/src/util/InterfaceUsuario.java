@@ -3,8 +3,10 @@ package util;
 import java.util.Scanner;
 
 public class InterfaceUsuario {
-    Scanner sc = new Scanner(System.in);
-
+    Scanner sc;
+    public InterfaceUsuario(Scanner scanner){
+        sc = scanner;
+    }
     public double valorImovel(){
         System.out.println("Digite o valor do imovel desejado: ");
         double valor = 0;
@@ -40,13 +42,18 @@ public class InterfaceUsuario {
         System.out.println("Digite a taxa de juros: ");
         double taxa = 0;
         while(true){
-            taxa = sc.nextDouble();
-            if(taxa < 0){
+            try{
+                taxa = sc.nextDouble();
+                if(taxa < 0){
+                    System.out.println("O valor inserido é inválido! Digite a taxa novamente: ");
+                    continue;
+                }
+                else {
+                    break;
+                }
+            } catch (Exception e) {
                 System.out.println("O valor inserido é inválido! Digite a taxa novamente: ");
-                continue;
-            }
-            else {
-                break;
+                sc.nextLine();
             }
         }
         return taxa;

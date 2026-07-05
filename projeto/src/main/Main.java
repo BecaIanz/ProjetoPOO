@@ -5,9 +5,9 @@ import modelo.Apartamento;
 import modelo.Casa;
 import modelo.Financiamento;
 import modelo.Terreno;
+import util.InterfaceUsuario;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args){
@@ -20,7 +20,7 @@ public class Main {
         financiamentos.add(cadastrarImovel("casa"));
         System.out.println("-----------------------\nApartamento 1\n");
         financiamentos.add(cadastrarImovel("apartamento"));
-        System.out.println("-----------------------\nApartamento 1\n");
+        System.out.println("-----------------------\nApartamento 2\n");
         financiamentos.add(cadastrarImovel("apartamento"));
         System.out.println("-----------------------\nTerreno 1\n");
         financiamentos.add(cadastrarImovel("terreno"));
@@ -38,24 +38,32 @@ public class Main {
     }
     public static Financiamento cadastrarImovel( String tipo) {
         Scanner sc = new Scanner(System.in);
-        System.out.print("Valor do imóvel: ");
-        double valor = sc.nextDouble();
+        InterfaceUsuario ui = new InterfaceUsuario(sc);
 
-        System.out.print("Prazo: ");
-        int prazo = sc.nextInt();
-
-        System.out.print("Taxa anual: ");
-        double texto = sc.nextDouble();
-        System.out.println("Você digitou: " + texto);
+        double valor = ui.valorImovel();
+        int prazo = ui.prazoFinanciamento();
+        double taxa = ui.taxaJuros();
 
         if(tipo.equals("casa")){
-            return new Casa(valor, prazo, 1);
+            System.out.println("Digite o tamanho da àrea contruida da casa: ");
+            double areaConst = sc.nextDouble();
+            System.out.println("Digite o tamanho da àrea total do terreno da casa: ");
+            double areaTotal = sc.nextDouble();
+
+            return new Casa(valor, prazo, taxa, areaConst, areaTotal);
         }
         else if(tipo.equals("apartamento")){
-            return new Apartamento(valor, prazo, 1);
+            System.out.println("Digite a quantidade de vagas de garagem: ");
+            int garagem = sc.nextInt();
+            System.out.println("Digite o andar do apartamento: ");
+            int andar = sc.nextInt();
+
+            return new Apartamento(valor, prazo, taxa, garagem, andar);
         }
         else{
-            return new Terreno(valor, prazo, 1);
+            System.out.println("Digite o tipo de zona (ex. residencial ou comercial):");
+            String zona = sc.next();
+            return new Terreno(valor, prazo, taxa, zona);
         }
     }
 }

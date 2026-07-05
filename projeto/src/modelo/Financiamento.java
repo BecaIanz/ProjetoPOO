@@ -1,6 +1,6 @@
 package modelo;
 
-public class Financiamento {
+public abstract class Financiamento {
     // CRIAÇÃO DE VARIAVEIS
     protected double valorImovel;
     public double getValorImovel(){
@@ -33,9 +33,7 @@ public class Financiamento {
         this.taxaJurosAnual = taxaJurosAnual;
     }
 
-    public double calcPagamentoMensal(){
-        return (this.valorImovel / (this.prazoFinanciamento * 12)) *(1 + (this.taxaJurosAnual / 12));
-    }
+    public abstract double calcPagamentoMensal();
 
     public double calcTotalPagamento(){
         return this.calcPagamentoMensal() * this.prazoFinanciamento * 12;
