@@ -5,6 +5,7 @@ import modelo.Apartamento;
 import modelo.Casa;
 import modelo.Financiamento;
 import modelo.Terreno;
+import util.ArquivoFinanciamento;
 import util.InterfaceUsuario;
 import util.Leituras;
 
@@ -36,6 +37,11 @@ public class Main {
 
         System.out.println("\n\nSoma imoveis: R$" + somaValores);
         System.out.println("Soma Total dos Financiamentos: R$" + somaFinanciamento);
+
+        ArquivoFinanciamento.salvarTexto(financiamentos);
+        ArquivoFinanciamento.lerTexto();
+        ArquivoFinanciamento.salvarObjetos(financiamentos);
+        ArquivoFinanciamento.lerObjetos();
     }
     public static Financiamento cadastrarImovel( String tipo) {
         Leituras lt = new Leituras();
