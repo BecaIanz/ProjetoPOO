@@ -17,8 +17,8 @@ public class Terreno extends Financiamento{
     }
 
     @Override
-    public void mostrarDados() {
-        super.mostrarDados();
+    public void mostrarDados(int i) {
+        super.mostrarDados(i);
 
         System.out.println("Tipo de Zona: " + getTipoZona());
     }

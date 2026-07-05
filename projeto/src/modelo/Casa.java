@@ -35,8 +35,8 @@ public class Casa extends Financiamento{
 
 
     @Override
-    public void mostrarDados() {
-        super.mostrarDados();
+    public void mostrarDados(int i) {
+        super.mostrarDados(i);
 
         System.out.println("Área construída: " + getTamAreaConst());
         System.out.println("Área terreno: " + getTamAreaTerreno());

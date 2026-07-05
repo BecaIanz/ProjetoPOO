@@ -38,8 +38,8 @@ public abstract class Financiamento {
     public double calcTotalPagamento(){
         return this.calcPagamentoMensal() * this.prazoFinanciamento * 12;
     }
-    public void mostrarDados(){
-        System.out.println("==================================== Dados Financiamento ====================================");
+    public void mostrarDados(int posicao){
+        System.out.println("==================================== Dados Financiamento " + posicao + " ====================================");
         System.out.print("\nValor do Imóvel: R$");
         System.out.println(valorImovel);
 

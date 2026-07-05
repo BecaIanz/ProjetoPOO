@@ -30,7 +30,8 @@ public class Main {
         for(Financiamento fin : financiamentos){
             somaValores += fin.getValorImovel();
             somaFinanciamento += fin.calcTotalPagamento();
-            fin.mostrarDados();
+            fin.mostrarDados(i);
+            i++;
         }
 
         System.out.println("\n\nSoma imoveis: R$" + somaValores);

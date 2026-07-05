@@ -28,10 +28,10 @@ public class Apartamento extends Financiamento{
     }
 
     @Override
-    public void mostrarDados() {
-        super.mostrarDados();
+    public void mostrarDados(int i) {
+        super.mostrarDados(i);
 
         System.out.println("Vagas de garagem: " + getVagasGaragem());
-        System.out.println("Andar: " + getAndar());
+        System.out.println( getAndar() + "º Andar: ");
     }
 }
